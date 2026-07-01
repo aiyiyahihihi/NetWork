@@ -756,28 +756,28 @@ print(ip)
 
 ---
 
-## 11. 故障排查指南
+## 故障排查指南
 
-### 11.1 排查流程图
+### 排查流程图
 
 ```
 用户报告：网站无法访问
          │
          ▼
 ┌────────────────────┐
-│ 检查本地 DNS 缓存   │  ipconfig /flushdns 后重试
+│   检查本地DNS缓存    │  ipconfig/flushdns后重试
 └────────┬───────────┘
          │ 问题依旧
          ▼
 ┌────────────────────┐
-│ 检查 HOSTS 文件     │  Windows: C:\Windows\System32\drivers\etc\hosts
-│                     │  Linux/Mac: /etc/hosts
+│   检查HOSTS文件     │  Windows: C:\Windows\System32\drivers\etc\hosts
+│                    │  Linux/Mac: /etc/hosts
 └────────┬───────────┘
          │ 无误
          ▼
 ┌────────────────────┐
-│ 手动 DNS 查询       │  dig example.com @8.8.8.8
-│ 是否返回正确 IP？   │  nslookup example.com 1.1.1.1
+│ 手动DNS查询         │  dig example.com @8.8.8.8
+│ 是否返回正确IP？     │  nslookup example.com 1.1.1.1
 └────┬───────┬───────┘
      │       │
    正常     异常
@@ -797,23 +797,23 @@ print(ip)
         │ 联系 ISP  │  │ 缓存或配置问题│
         └──────────┘  └──────────────┘
 
-如果所有 DNS 都异常 → 域名可能到期或 DNS 配置错误
+如果所有DNS都异常 → 域名可能到期或DNS配置错误
 ```
 
-### 11.2 常见问题与解决
+### 常见问题与解决
 
 | 症状 | 可能原因 | 排查命令 |
 |------|---------|---------|
-| 无法解析任何域名 | DNS 服务器不可达、网络断开 | `ping 8.8.8.8` |
-| 仅无法解析某个域名 | 域名过期、DNS 配置错误 | `dig NS example.com` |
-| 解析到错误 IP | DNS 缓存投毒、hosts 文件 | `ipconfig /flushdns` |
-| 间歇性解析失败 | DNS 服务器过载、网络抖动 | `dig +stats example.com` |
-| 子域名不生效 | TTL 未过期、未配置 | `dig +trace sub.example.com` |
-| DNSSEC 验证失败 | DNSSEC 配置错误 | `dig +dnssec example.com` |
-| 部分地域慢/不通 | GeoDNS 或 CDN 问题 | dnschecker.org 检查 |
-| 邮件被拒收 | SPF/DKIM/DMARC 未配置 | `dig TXT example.com` |
+| 无法解析任何域名 | DNS服务器不可达、网络断开 | `ping 8.8.8.8` |
+| 仅无法解析某个域名 | 域名过期、DNS配置错误 | `dig NS example.com` |
+| 解析到错误IP | DNS缓存投毒、hosts文件 | `ipconfig/flushdns` |
+| 间歇性解析失败 | DNS服务器过载、网络抖动 | `dig +stats example.com` |
+| 子域名不生效 | TTL未过期、未配置 | `dig +trace sub.example.com` |
+| DNSSEC验证失败 | DNSSEC配置错误 | `dig +dnssec example.com` |
+| 部分地域慢/不通 | GeoDNS或CDN问题 | dnschecker.org检查 |
+| 邮件被拒收 | SPF/DKIM/DMARC未配置 | `dig TXT example.com` |
 
-### 11.3 诊断技巧
+### 诊断技巧
 
 ```bash
 # 1. 查看完整权威链
@@ -927,13 +927,13 @@ blog IN  CNAME  example.blogspot.com.
 | `.int` | 国际组织 |
 | `.cn` | 中国 |
 | `.io` | 英属印度洋领地（常用于科技公司） |
-| `.dev` | 开发者（强制 HTTPS） |
-| `.app` | 应用（强制 HTTPS） |
+| `.dev` | 开发者（强制HTTPS） |
+| `.app` | 应用（强制HTTPS） |
 
-## 附录 B：DNS 相关 RFC 速查
+## 附录 B：DNS相关RFC速查
 
 | RFC | 标题 | 年份 |
-|-----|------|------|
+|:---:|------|------|
 | RFC 1034 | Domain Names — Concepts and Facilities | 1987 |
 | RFC 1035 | Domain Names — Implementation and Specification | 1987 |
 | RFC 2181 | Clarifications to the DNS Specification | 1997 |
@@ -953,4 +953,4 @@ blog IN  CNAME  example.blogspot.com.
 
 ---
 
-> **结语**：DNS 是互联网最基础也最重要的基础设施之一。理解 DNS 的工作原理、记录类型、安全机制和故障排查方法，是每一位网络工程师和后端开发者的必备技能。本文档涵盖了 DNS 的核心知识点，建议结合实际操作（`dig`、`nslookup`）反复练习以加深理解。
+> **结语**：DNS是互联网最基础也最重要的基础设施之一。理解DNS的工作原理、记录类型、安全机制和故障排查方法，是每一位网络工程师和后端开发者的必备技能。本文档涵盖了 DNS 的核心知识点，建议结合实际操作（`dig`、`nslookup`）反复练习以加深理解。
