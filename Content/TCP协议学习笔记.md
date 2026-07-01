@@ -135,7 +135,7 @@
   连接建立                         连接建立
 ```
 
-![](E:\Repositories\Notes\NetWork\images\TCP三次握手详解.png)
+![](E:\Repositories\Notes\NetWork\Content\images\TCP三次握手详解.png)
 
 | 握手 | 方向 | 标志位 | 作用 |
 |------|------|--------|------|
@@ -171,7 +171,7 @@
   TIME_WAIT (2MSL)               CLOSED
 ```
 
-![](E:\Repositories\Notes\NetWork\images\TCP四次挥手详解.png)
+![](E:\Repositories\Notes\NetWork\Content\images\TCP四次挥手详解.png)
 
 | 挥手 | 方向 | 说明 |
 |------|------|------|
@@ -291,7 +291,7 @@ RTO = SRTT + 4 × DevRTT                              // 超时时间
                                        └──────────────┘
 ```
 
-![](E:\Repositories\Notes\NetWork\images\拥塞控制详解.png)
+![](E:\Repositories\Notes\NetWork\Content\images\拥塞控制详解.png)
 
 ### 慢启动（Slow Start）
 
